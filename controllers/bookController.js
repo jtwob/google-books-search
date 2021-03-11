@@ -23,7 +23,16 @@ module.exports = {
       const allBooks = await Book.find({});
       res.json(allBooks);
     } catch (err) {
-      res.send("Unable to retrieve saved books", err);
+      res.send("Unable to retrieve saved books ", err);
+    }
+  },
+
+  deleteBook: async (req, res) => {
+    try {
+      const deleted = await Book.findByIdAndDelete({ _id: req.params.id });
+      res.json(deleted);
+    } catch (err) {
+      res.send("Unable to delete book ", err);
     }
   },
 };
