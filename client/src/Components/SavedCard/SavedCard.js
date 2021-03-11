@@ -1,22 +1,13 @@
 import React from "react";
 import axios from "axios";
 
-const ResultCard = (props) => {
-  const saveBook = async function () {
-    const bookObj = {
-      title: props.title,
-      authors: props.authors,
-      description: props.description,
-      image: props.image,
-      link: props.link,
-    };
-
-    const newBook = await axios.post("/api/books", bookObj);
+const SavedCard = (props) => {
+  const deleteBook = async function () {
+    const book = await axios.delete(`/api/books/${props.id}`);
   };
 
   const onClick = (e) => {
-    e.preventDefault();
-    saveBook();
+    deleteBook();
   };
 
   return (
@@ -40,7 +31,7 @@ const ResultCard = (props) => {
                 View
               </a>
               <button onClick={onClick} className="btn btn-primary">
-                Save
+                Delete
               </button>
             </div>
           </div>
@@ -64,4 +55,4 @@ const ResultCard = (props) => {
   );
 };
 
-export default ResultCard;
+export default SavedCard;

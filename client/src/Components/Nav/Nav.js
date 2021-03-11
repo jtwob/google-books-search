@@ -4,7 +4,7 @@ const Nav = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="#">
-        Google Books Search
+        Google Books
       </a>
       <button
         className="navbar-toggler"
