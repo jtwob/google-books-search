@@ -1,20 +1,25 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
+import Search from "./Pages/Search";
+import Saved from "./Pages/Saved";
+import Nav from "./Components/Nav/Nav";
 
 function App() {
   return (
     <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
+      <div className="container">
+        <Router>
+          <Nav />
+          <Switch>
+            <Route path="/search" component={Search} />
+            <Route path="/saved" component={Saved} />
+          </Switch>
+        </Router>
       </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
     </div>
   );
 }
-
 
 export default App;
