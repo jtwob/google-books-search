@@ -2,7 +2,7 @@
 
 ## Description
 
-This app uses the google books api to find books and if desired, save them. It also allows users to view the google play page linked to the book.
+This app uses the google books api to find books and if desired, save them. It also allows users to view the google play page linked to the book. MongoDB is used to store saved books, Express is used for the backend server and routes, React is used for the frontend pages and interface, and numerous node libraries and scripts are used. This is a full MERN stack application.
 
 ## Images:
 
