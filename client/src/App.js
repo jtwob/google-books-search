@@ -5,6 +5,7 @@ import "./App.css";
 import Search from "./Pages/Search";
 import Saved from "./Pages/Saved";
 import Nav from "./Components/Nav/Nav";
+import Jumbotron from "./Components/Jumbotron/Jumbotron";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="container">
         <Router>
           <Nav />
+          <Jumbotron />
           <Switch>
             <Route path="/search" component={Search} />
             <Route path="/saved" component={Saved} />
