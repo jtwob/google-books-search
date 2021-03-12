@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoose.connect(
-  process.env.MONGO_URI || "mongodb://localhost/googlebooks",
+  process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
