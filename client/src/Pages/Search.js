@@ -13,11 +13,14 @@ const Search = (props) => {
   const onSubmitHandler = async function (e) {
     e.preventDefault();
     var query = search.term.trim().replace(/  +/g, "+");
-    console.log(query);
-    const books = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${query}`
-    );
-    setresults({ data: books.data.items });
+    try {
+      const books = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=${query}`
+      );
+      setresults({ data: books.data.items });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -45,21 +48,33 @@ const Search = (props) => {
       <hr />
       <div className="container" style={{ backgroundColor: "lightgray" }}>
         <h3>Results</h3>
-        {results.data.map((result) => (
-          <div className="row" style={{ justifyContent: "center" }}>
-            <ResultCard
-              title={result.volumeInfo.title}
-              authors={result.volumeInfo.authors}
-              description={
-                result.volumeInfo.description
-                  ? result.volumeInfo.description
-                  : "No available description at this time."
-              }
-              image={result.volumeInfo.imageLinks.thumbnail}
-              link={result.volumeInfo.infoLink}
-            />
-          </div>
-        ))}
+        {results.data.length > 0 ? (
+          results.data.map(({ volumeInfo }) => (
+            <div className="row" style={{ justifyContent: "center" }}>
+              <ResultCard
+                title={volumeInfo.title}
+                authors={
+                  volumeInfo.authors
+                    ? volumeInfo.authors
+                    : ["Author name unavailable"]
+                }
+                description={
+                  volumeInfo.description
+                    ? volumeInfo.description
+                    : "No available description at this time."
+                }
+                image={
+                  volumeInfo.imageLinks
+                    ? volumeInfo.imageLinks.thumbnail
+                    : "No Image Provided."
+                }
+                link={volumeInfo.infoLink}
+              />
+            </div>
+          ))
+        ) : (
+          <h1>No results found for this search...</h1>
+        )}
       </div>
     </div>
   );

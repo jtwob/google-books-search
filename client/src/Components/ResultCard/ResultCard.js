@@ -47,12 +47,20 @@ const ResultCard = (props) => {
 
           <div className="row">
             <div className="col-sm-3">
-              <img
-                className="card-img-top"
-                src={props.image}
-                alt="Card image cap"
-                style={{ width: 150 + "px", float: "left", margin: 10 + "px" }}
-              />
+              {props.image === "No Image Provided." ? (
+                <h6>{props.image}</h6>
+              ) : (
+                <img
+                  className="card-img-top"
+                  src={props.image}
+                  alt="Card image cap"
+                  style={{
+                    width: 150 + "px",
+                    float: "left",
+                    margin: 10 + "px",
+                  }}
+                />
+              )}
             </div>
             <div className="col-sm-9">
               <p className="card-text">{props.description}</p>
